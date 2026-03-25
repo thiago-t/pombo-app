@@ -172,6 +172,7 @@ convetion-kmp-library = { id = "com.ttlabz.convention.kmp.library", version = "u
 convetion-cmp-library = { id = "com.ttlabz.convention.cmp.library", version = "unspecified" }
 convetion-cmp-feature = { id = "com.ttlabz.convention.cmp.feature", version = "unspecified" }
 convetion-buildkonfig = { id = "com.ttlabz.convention.buildkonfig", version = "unspecified" }
+convetion-room = { id = "com.ttlabz.convention.room", version = "unspecified" }
 
 # Android
 android-application = { id = "com.android.application", version.ref = "agp" }
