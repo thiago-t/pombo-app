@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.convetion.kmp.library)
+    alias(libs.plugins.convetion.cmp.library)
 }
 
 kotlin {
