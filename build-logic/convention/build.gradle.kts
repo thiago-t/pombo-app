@@ -45,5 +45,9 @@ gradlePlugin {
             id = "com.ttlabz.convention.cmp.application"
             implementationClass = "CmpApplicationConventionPlugin"
         }
+        register("kmpApplication") {
+            id = "com.ttlabz.convention.kmp.library"
+            implementationClass = "KmpLibraryConventionPlugin"
+        }
     }
 }

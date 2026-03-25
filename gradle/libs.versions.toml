@@ -159,6 +159,7 @@ androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "j
 convetion-android-application = { id = "com.ttlabz.convention.android.application", version = "unspecified" }
 convetion-android-application-compose = { id = "com.ttlabz.convention.android.application.compose", version = "unspecified" }
 convetion-cmp-application = { id = "com.ttlabz.convention.cmp.application", version = "unspecified" }
+convetion-kmp-library = { id = "com.ttlabz.convention.kmp.library", version = "unspecified" }
 
 # Android
 android-application = { id = "com.android.application", version.ref = "agp" }
