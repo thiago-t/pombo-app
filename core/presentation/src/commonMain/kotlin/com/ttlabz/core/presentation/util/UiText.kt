@@ -1,4 +1,4 @@
-package com.ttlabz.core.presentation
+package com.ttlabz.core.presentation.util
 
 import androidx.compose.runtime.Composable
 import org.jetbrains.compose.resources.StringResource
