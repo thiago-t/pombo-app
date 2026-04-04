@@ -18,9 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.ttlabz.core.designsystem.theme.PomboTheme
 import com.ttlabz.core.designsystem.theme.extended
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun PomboTextFieldLayout(
