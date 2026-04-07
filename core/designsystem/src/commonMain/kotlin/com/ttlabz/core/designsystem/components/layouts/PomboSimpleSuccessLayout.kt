@@ -1,13 +1,11 @@
 package com.ttlabz.core.designsystem.components.layouts
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,10 +18,7 @@ import com.ttlabz.core.designsystem.components.buttons.PomboButton
 import com.ttlabz.core.designsystem.components.buttons.PomboButtonStyle
 import com.ttlabz.core.designsystem.theme.PomboTheme
 import com.ttlabz.core.designsystem.theme.extended
-import org.jetbrains.compose.resources.vectorResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import pombo.core.designsystem.generated.resources.Res
-import pombo.core.designsystem.generated.resources.success_checkmark
 
 @Composable
 fun PomboSimpleSuccessLayout(
