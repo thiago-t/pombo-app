@@ -17,7 +17,7 @@ class KtorAuthService(
         password: String
     ): EmptyResult<DataError.Remote> {
         return httpClient.post(
-            route = "/auth/register",
+            route = "/api/v1/auth/register",
             body = RegisterRequest(
                 email = email,
                 username = username,
