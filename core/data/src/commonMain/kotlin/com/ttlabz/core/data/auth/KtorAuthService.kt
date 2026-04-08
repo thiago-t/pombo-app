@@ -1,5 +1,6 @@
 package com.ttlabz.core.data.auth
 
+import com.ttlabz.core.data.dto.requests.EmailRequest
 import com.ttlabz.core.data.dto.requests.RegisterRequest
 import com.ttlabz.core.data.networking.post
 import com.ttlabz.core.domain.auth.AuthService
@@ -23,6 +24,13 @@ class KtorAuthService(
                 username = username,
                 password = password
             )
+        )
+    }
+
+    override suspend fun resendVerificationEmail(email: String): EmptyResult<DataError.Remote> {
+        return httpClient.post(
+            route = "/api/v1/auth/resend-verification",
+            body = EmailRequest(email)
         )
     }
 
