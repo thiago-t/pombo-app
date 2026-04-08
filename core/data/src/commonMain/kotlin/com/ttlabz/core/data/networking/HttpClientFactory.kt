@@ -17,7 +17,7 @@ import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-class HttpClientFactor(
+class HttpClientFactory(
     private val pomboLogger: PomboLogger
 ) {
 

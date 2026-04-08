@@ -3,7 +3,7 @@ package com.ttlabz.core.data.logging
 import co.touchlab.kermit.Logger
 import com.ttlabz.core.domain.logging.PomboLogger
 
-class KermitLogger : PomboLogger {
+object KermitLogger : PomboLogger {
 
     override fun debug(message: String) {
         Logger.d(message)
