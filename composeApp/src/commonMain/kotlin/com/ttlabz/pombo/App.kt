@@ -28,6 +28,8 @@ import pombo.composeapp.generated.resources.compose_multiplatform
 @Preview
 fun App() {
     PomboTheme {
-        RegisterRoot()
+        RegisterRoot(
+            onRegisterSuccess = {}
+        )
     }
 }
