@@ -3,7 +3,9 @@ package com.ttlabz.auth.presentation.navigation
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import androidx.navigation.navDeepLink
 import androidx.navigation.navigation
+import com.ttlabz.auth.presentation.email_verification.EmailVerificationRoot
 import com.ttlabz.auth.presentation.register.RegisterRoot
 import com.ttlabz.auth.presentation.register_success.RegisterSuccessRoot
 
@@ -23,6 +25,20 @@ fun NavGraphBuilder.authGraph(
         }
         composable<AuthGraphRoutes.RegisterSuccess> {
             RegisterSuccessRoot()
+        }
+        composable<AuthGraphRoutes.EmailVerification>(
+            deepLinks = listOf(
+                navDeepLink {
+                    this.uriPattern =
+                        "https://pombo-d341e.rj.r.appspot.com/api/v1/auth/verify?token={token}"
+                },
+                navDeepLink {
+                    this.uriPattern =
+                        "pombo://pombo-d341e.rj.r.appspot.com/api/v1/auth/verify?token={token}"
+                }
+            )
+        ) {
+            EmailVerificationRoot()
         }
     }
 }

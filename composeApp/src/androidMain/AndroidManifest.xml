@@ -19,6 +19,42 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="pombo-d341e.rj.r.appspot.com"
+                    android:pathPrefix="/api/v1/auth/verify"
+                    android:scheme="http" />
+            </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="pombo-d341e.rj.r.appspot.com"
+                    android:pathPrefix="/api/v1/auth/verify"
+                    android:scheme="https" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="pombo-d341e.rj.r.appspot.com"
+                    android:pathPrefix="/api/v1/auth/verify"
+                    android:scheme="pombo" />
+            </intent-filter>
         </activity>
     </application>
 
