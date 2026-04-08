@@ -1,6 +1,7 @@
 package com.ttlabz.core.designsystem.components.layouts
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,10 +22,10 @@ import com.ttlabz.core.designsystem.theme.extended
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
-fun PomboSimpleSuccessLayout(
+fun PomboSimpleResultLayout(
     title: String,
     description: String,
-    icon: @Composable () -> Unit,
+    icon: @Composable ColumnScope.() -> Unit,
     primaryButton: @Composable () -> Unit,
     secondaryButton: @Composable (() -> Unit)? = null,
     secondaryError: String? = null,
@@ -83,7 +84,7 @@ fun PomboSimpleSuccessLayout(
 @Preview(showBackground = true)
 fun PomboSimpleSuccessLayoutPreview() {
     PomboTheme {
-        PomboSimpleSuccessLayout(
+        PomboSimpleResultLayout(
             title = "Hello world",
             description = "Testing",
             icon = { PomboSuccessIcon() },

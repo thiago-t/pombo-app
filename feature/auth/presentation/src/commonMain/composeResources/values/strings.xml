@@ -5,6 +5,11 @@
     <string name="verification_email_sent_to_x">We've sent a verification email to %1$s</string>
     <string name="resend_verification_email">Resend verification email</string>
     <string name="resent_verification_email">Successfully resent verification email</string>
+    <string name="verifying_account">Verifying account...</string>
+    <string name="email_verified_successfully">Email verified successfully!</string>
+    <string name="email_verified_successfully_description">Your email has been verified. You can now log in with your credentials.</string>
+    <string name="email_verification_failed">Failed to verify your email!</string>
+    <string name="email_verification_failed_description">Unable to verify your email. Maybe the link is invalid or has expired.</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
@@ -12,6 +17,7 @@
     <string name="username_placeholder">Pombo</string>
     <string name="email_placeholder">hello@pombo.com</string>
     <string name="login">Log In</string>
+    <string name="close">Close</string>
     <string name="username_hint">Use between 3 and 20 characters for your username</string>
     <string name="password_hint">Use 9+ characters, at least one digit and one uppercase letter</string>
     <string name="error_account_exists">An account with that email or username already exists</string>

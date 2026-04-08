@@ -11,7 +11,7 @@ import com.ttlabz.core.designsystem.components.brand.PomboSuccessIcon
 import com.ttlabz.core.designsystem.components.buttons.PomboButton
 import com.ttlabz.core.designsystem.components.buttons.PomboButtonStyle
 import com.ttlabz.core.designsystem.components.layouts.PomboAdaptiveResultLayout
-import com.ttlabz.core.designsystem.components.layouts.PomboSimpleSuccessLayout
+import com.ttlabz.core.designsystem.components.layouts.PomboSimpleResultLayout
 import com.ttlabz.core.designsystem.components.layouts.PomboSnackbarScaffold
 import com.ttlabz.core.designsystem.theme.PomboTheme
 import com.ttlabz.core.presentation.util.ObserveAsEvents
@@ -62,7 +62,7 @@ fun RegisterSuccessScreen(
         snackbarHostState = snackbarHostState
     ) {
         PomboAdaptiveResultLayout {
-            PomboSimpleSuccessLayout(
+            PomboSimpleResultLayout(
                 title = stringResource(Res.string.account_successfully_created),
                 description = stringResource(
                     Res.string.verification_email_sent_to_x,
