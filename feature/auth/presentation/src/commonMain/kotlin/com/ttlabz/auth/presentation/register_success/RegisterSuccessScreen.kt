@@ -5,8 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.ttlabz.core.designsystem.components.brand.PomboBrandLogo
 import com.ttlabz.core.designsystem.components.brand.PomboSuccessIcon
 import com.ttlabz.core.designsystem.components.buttons.PomboButton
 import com.ttlabz.core.designsystem.components.buttons.PomboButtonStyle
@@ -15,6 +13,7 @@ import com.ttlabz.core.designsystem.components.layouts.PomboSimpleSuccessLayout
 import com.ttlabz.core.designsystem.theme.PomboTheme
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
 import pombo.feature.auth.presentation.generated.resources.Res
 import pombo.feature.auth.presentation.generated.resources.account_successfully_created
 import pombo.feature.auth.presentation.generated.resources.login
@@ -23,7 +22,7 @@ import pombo.feature.auth.presentation.generated.resources.verification_email_se
 
 @Composable
 fun RegisterSuccessRoot(
-    viewModel: RegisterSuccessViewModel = viewModel()
+    viewModel: RegisterSuccessViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
