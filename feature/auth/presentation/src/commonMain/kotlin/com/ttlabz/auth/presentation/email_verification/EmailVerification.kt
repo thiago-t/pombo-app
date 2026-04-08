@@ -17,7 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ttlabz.core.designsystem.components.brand.PomboFailureIcon
 import com.ttlabz.core.designsystem.components.brand.PomboSuccessIcon
 import com.ttlabz.core.designsystem.components.buttons.PomboButton
@@ -28,6 +27,7 @@ import com.ttlabz.core.designsystem.theme.PomboTheme
 import com.ttlabz.core.designsystem.theme.extended
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
 import pombo.feature.auth.presentation.generated.resources.Res
 import pombo.feature.auth.presentation.generated.resources.close
 import pombo.feature.auth.presentation.generated.resources.email_verification_failed
@@ -39,7 +39,7 @@ import pombo.feature.auth.presentation.generated.resources.verifying_account
 
 @Composable
 fun EmailVerificationRoot(
-    viewModel: EmailVerificationViewModel = viewModel()
+    viewModel: EmailVerificationViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
