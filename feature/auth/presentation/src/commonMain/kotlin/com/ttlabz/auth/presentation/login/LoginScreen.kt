@@ -18,6 +18,7 @@ import com.ttlabz.core.designsystem.components.brand.PomboBrandLogo
 import com.ttlabz.core.designsystem.components.buttons.PomboButton
 import com.ttlabz.core.designsystem.components.buttons.PomboButtonStyle
 import com.ttlabz.core.designsystem.components.layouts.PomboAdaptiveFormLayout
+import com.ttlabz.core.designsystem.components.layouts.PomboSnackbarScaffold
 import com.ttlabz.core.designsystem.components.textfields.PomboPasswordTextField
 import com.ttlabz.core.designsystem.components.textfields.PomboTextField
 import com.ttlabz.core.designsystem.theme.PomboTheme
@@ -67,61 +68,63 @@ fun LoginScreen(
     state: LoginScreenState,
     onAction: (LoginScreenAction) -> Unit,
 ) {
-    PomboAdaptiveFormLayout(
-        headerText = stringResource(Res.string.welcome_back),
-        errorText = state.error?.asString(),
-        logo = { PomboBrandLogo() },
-        modifier = Modifier.fillMaxSize()
-    ) {
-        PomboTextField(
-            state = state.emailTextFieldState,
-            placeholder = stringResource(Res.string.email_placeholder),
-            singleLine = true,
-            keyboardType = KeyboardType.Email,
-            modifier = Modifier.fillMaxWidth(),
-            title = stringResource(Res.string.email),
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        PomboPasswordTextField(
-            state = state.passwordTextFieldState,
-            placeholder = stringResource(Res.string.password),
-            modifier = Modifier.fillMaxWidth(),
-            isPasswordVisible = state.isPasswordVisible,
-            onToggleVisibilityClick = {
-                onAction(LoginScreenAction.OnTogglePasswordVisibility)
-            },
-            title = stringResource(Res.string.password),
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(
-            text = stringResource(Res.string.forgot_password),
-            style = MaterialTheme.typography.titleSmall,
-            color = MaterialTheme.colorScheme.tertiary,
-            modifier = Modifier
-                .align(Alignment.End)
-                .clickable {
-                    onAction(LoginScreenAction.OnForgotPasswordClick)
-                }
-        )
-        Spacer(modifier = Modifier.height(24.dp))
-        PomboButton(
-            text = stringResource(Res.string.login),
-            onClick = {
-                onAction(LoginScreenAction.OnLoginClick)
-            },
-            enabled = state.canLogin,
-            isLoading = state.isLoggingIn,
-            modifier = Modifier.fillMaxWidth()
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        PomboButton(
-            text = stringResource(Res.string.create_account),
-            onClick = {
-                onAction(LoginScreenAction.OnSignUpClick)
-            },
-            style = PomboButtonStyle.SECONDARY,
-            modifier = Modifier.fillMaxWidth()
-        )
+    PomboSnackbarScaffold {
+        PomboAdaptiveFormLayout(
+            headerText = stringResource(Res.string.welcome_back),
+            errorText = state.error?.asString(),
+            logo = { PomboBrandLogo() },
+            modifier = Modifier.fillMaxSize()
+        ) {
+            PomboTextField(
+                state = state.emailTextFieldState,
+                placeholder = stringResource(Res.string.email_placeholder),
+                singleLine = true,
+                keyboardType = KeyboardType.Email,
+                modifier = Modifier.fillMaxWidth(),
+                title = stringResource(Res.string.email),
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            PomboPasswordTextField(
+                state = state.passwordTextFieldState,
+                placeholder = stringResource(Res.string.password),
+                modifier = Modifier.fillMaxWidth(),
+                isPasswordVisible = state.isPasswordVisible,
+                onToggleVisibilityClick = {
+                    onAction(LoginScreenAction.OnTogglePasswordVisibility)
+                },
+                title = stringResource(Res.string.password),
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = stringResource(Res.string.forgot_password),
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.tertiary,
+                modifier = Modifier
+                    .align(Alignment.End)
+                    .clickable {
+                        onAction(LoginScreenAction.OnForgotPasswordClick)
+                    }
+            )
+            Spacer(modifier = Modifier.height(24.dp))
+            PomboButton(
+                text = stringResource(Res.string.login),
+                onClick = {
+                    onAction(LoginScreenAction.OnLoginClick)
+                },
+                enabled = state.canLogin,
+                isLoading = state.isLoggingIn,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            PomboButton(
+                text = stringResource(Res.string.create_account),
+                onClick = {
+                    onAction(LoginScreenAction.OnSignUpClick)
+                },
+                style = PomboButtonStyle.SECONDARY,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }
 

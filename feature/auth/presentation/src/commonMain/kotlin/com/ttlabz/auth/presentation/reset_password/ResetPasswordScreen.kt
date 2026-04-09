@@ -14,6 +14,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ttlabz.core.designsystem.components.brand.PomboBrandLogo
 import com.ttlabz.core.designsystem.components.buttons.PomboButton
 import com.ttlabz.core.designsystem.components.layouts.PomboAdaptiveFormLayout
+import com.ttlabz.core.designsystem.components.layouts.PomboSnackbarScaffold
 import com.ttlabz.core.designsystem.components.textfields.PomboPasswordTextField
 import com.ttlabz.core.designsystem.theme.PomboTheme
 import com.ttlabz.core.designsystem.theme.extended
@@ -44,42 +45,44 @@ fun ResetPasswordScreen(
     state: ResetPasswordState,
     onAction: (ResetPasswordAction) -> Unit,
 ) {
-    PomboAdaptiveFormLayout(
-        headerText = stringResource(Res.string.set_new_password),
-        errorText = state.errorText?.asString(),
-        logo = { PomboBrandLogo() },
-    ) {
-        PomboPasswordTextField(
-            state = state.passwordTextState,
-            modifier = Modifier.fillMaxWidth(),
-            placeholder = stringResource(Res.string.password),
-            title = stringResource(Res.string.password),
-            supportingText = stringResource(Res.string.password_hint),
-            isPasswordVisible = state.isPasswordVisible,
-            onToggleVisibilityClick = {
-                onAction(ResetPasswordAction.OnTogglePasswordVisibility)
-            }
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        PomboButton(
-            text = stringResource(Res.string.submit),
-            onClick = {
-                onAction(ResetPasswordAction.OnSubmitClick)
-            },
-            modifier = Modifier.fillMaxWidth(),
-            enabled = !state.isLoading && state.canSubmit,
-            isLoading = state.isLoading
-        )
-
-        if (state.isResetSuccessful) {
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = stringResource(Res.string.reset_password_successfully),
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.extended.success,
+    PomboSnackbarScaffold {
+        PomboAdaptiveFormLayout(
+            headerText = stringResource(Res.string.set_new_password),
+            errorText = state.errorText?.asString(),
+            logo = { PomboBrandLogo() },
+        ) {
+            PomboPasswordTextField(
+                state = state.passwordTextState,
                 modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                placeholder = stringResource(Res.string.password),
+                title = stringResource(Res.string.password),
+                supportingText = stringResource(Res.string.password_hint),
+                isPasswordVisible = state.isPasswordVisible,
+                onToggleVisibilityClick = {
+                    onAction(ResetPasswordAction.OnTogglePasswordVisibility)
+                }
             )
+            Spacer(modifier = Modifier.height(16.dp))
+            PomboButton(
+                text = stringResource(Res.string.submit),
+                onClick = {
+                    onAction(ResetPasswordAction.OnSubmitClick)
+                },
+                modifier = Modifier.fillMaxWidth(),
+                enabled = !state.isLoading && state.canSubmit,
+                isLoading = state.isLoading
+            )
+
+            if (state.isResetSuccessful) {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = stringResource(Res.string.reset_password_successfully),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.extended.success,
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center
+                )
+            }
         }
     }
 }

@@ -15,6 +15,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.ttlabz.core.designsystem.components.brand.PomboBrandLogo
 import com.ttlabz.core.designsystem.components.buttons.PomboButton
 import com.ttlabz.core.designsystem.components.layouts.PomboAdaptiveFormLayout
+import com.ttlabz.core.designsystem.components.layouts.PomboSnackbarScaffold
 import com.ttlabz.core.designsystem.components.textfields.PomboTextField
 import com.ttlabz.core.designsystem.theme.PomboTheme
 import com.ttlabz.core.designsystem.theme.extended
@@ -45,40 +46,42 @@ fun ForgotPasswordScreen(
     state: ForgotPasswordState,
     onAction: (ForgotPasswordAction) -> Unit,
 ) {
-    PomboAdaptiveFormLayout(
-        headerText = stringResource(Res.string.title_forgot_password),
-        errorText = state.errorText?.asString(),
-        logo = { PomboBrandLogo() }
-    ) {
-        PomboTextField(
-            state = state.emailTextFieldState,
-            modifier = Modifier.fillMaxWidth(),
-            placeholder = stringResource(Res.string.email_placeholder),
-            title = stringResource(Res.string.email),
-            isError = state.errorText != null,
-            supportingText = state.errorText?.asString(),
-            keyboardType = KeyboardType.Email,
-            singleLine = true
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        PomboButton(
-            text = stringResource(Res.string.submit),
-            onClick = {
-                onAction(ForgotPasswordAction.OnSubmitClick)
-            },
-            modifier = Modifier.fillMaxWidth(),
-            enabled = !state.isLoading && state.canSubmit,
-            isLoading = state.isLoading
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        if (state.isEmailSentSuccessfully) {
-            Text(
-                text = stringResource(Res.string.forgot_password_email_sent_successfully),
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.extended.success,
+    PomboSnackbarScaffold {
+        PomboAdaptiveFormLayout(
+            headerText = stringResource(Res.string.title_forgot_password),
+            errorText = state.errorText?.asString(),
+            logo = { PomboBrandLogo() }
+        ) {
+            PomboTextField(
+                state = state.emailTextFieldState,
                 modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
+                placeholder = stringResource(Res.string.email_placeholder),
+                title = stringResource(Res.string.email),
+                isError = state.errorText != null,
+                supportingText = state.errorText?.asString(),
+                keyboardType = KeyboardType.Email,
+                singleLine = true
             )
+            Spacer(modifier = Modifier.height(16.dp))
+            PomboButton(
+                text = stringResource(Res.string.submit),
+                onClick = {
+                    onAction(ForgotPasswordAction.OnSubmitClick)
+                },
+                modifier = Modifier.fillMaxWidth(),
+                enabled = !state.isLoading && state.canSubmit,
+                isLoading = state.isLoading
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            if (state.isEmailSentSuccessfully) {
+                Text(
+                    text = stringResource(Res.string.forgot_password_email_sent_successfully),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.extended.success,
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center
+                )
+            }
         }
     }
 }

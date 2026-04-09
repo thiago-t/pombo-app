@@ -23,6 +23,7 @@ import com.ttlabz.core.designsystem.components.buttons.PomboButton
 import com.ttlabz.core.designsystem.components.buttons.PomboButtonStyle
 import com.ttlabz.core.designsystem.components.layouts.PomboAdaptiveResultLayout
 import com.ttlabz.core.designsystem.components.layouts.PomboSimpleResultLayout
+import com.ttlabz.core.designsystem.components.layouts.PomboSnackbarScaffold
 import com.ttlabz.core.designsystem.theme.PomboTheme
 import com.ttlabz.core.designsystem.theme.extended
 import org.jetbrains.compose.resources.stringResource
@@ -62,51 +63,53 @@ fun EmailVerificationScreen(
     state: EmailVerificationState,
     onAction: (EmailVerificationAction) -> Unit,
 ) {
-    PomboAdaptiveResultLayout {
-        when {
-            state.isVerifying -> {
-                VerifyingContent(
-                    modifier = Modifier.fillMaxWidth()
-                )
-            }
+    PomboSnackbarScaffold {
+        PomboAdaptiveResultLayout {
+            when {
+                state.isVerifying -> {
+                    VerifyingContent(
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
 
-            state.isVerified -> {
-                PomboSimpleResultLayout(
-                    title = stringResource(Res.string.email_verified_successfully),
-                    description = stringResource(Res.string.email_verified_successfully_description),
-                    icon = { PomboSuccessIcon() },
-                    primaryButton = {
-                        PomboButton(
-                            text = stringResource(Res.string.login),
-                            onClick = {
-                                onAction(EmailVerificationAction.OnLoginClick)
-                            },
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    }
-                )
-            }
+                state.isVerified -> {
+                    PomboSimpleResultLayout(
+                        title = stringResource(Res.string.email_verified_successfully),
+                        description = stringResource(Res.string.email_verified_successfully_description),
+                        icon = { PomboSuccessIcon() },
+                        primaryButton = {
+                            PomboButton(
+                                text = stringResource(Res.string.login),
+                                onClick = {
+                                    onAction(EmailVerificationAction.OnLoginClick)
+                                },
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+                    )
+                }
 
-            else -> {
-                PomboSimpleResultLayout(
-                    title = stringResource(Res.string.email_verification_failed),
-                    description = stringResource(Res.string.email_verification_failed_description),
-                    icon = {
-                        Spacer(modifier = Modifier.height(32.dp))
-                        PomboFailureIcon(modifier = Modifier.size(80.dp))
-                        Spacer(modifier = Modifier.height(32.dp))
-                    },
-                    primaryButton = {
-                        PomboButton(
-                            text = stringResource(Res.string.close),
-                            onClick = {
-                                onAction(EmailVerificationAction.OnCloseClick)
-                            },
-                            modifier = Modifier.fillMaxWidth(),
-                            style = PomboButtonStyle.SECONDARY
-                        )
-                    }
-                )
+                else -> {
+                    PomboSimpleResultLayout(
+                        title = stringResource(Res.string.email_verification_failed),
+                        description = stringResource(Res.string.email_verification_failed_description),
+                        icon = {
+                            Spacer(modifier = Modifier.height(32.dp))
+                            PomboFailureIcon(modifier = Modifier.size(80.dp))
+                            Spacer(modifier = Modifier.height(32.dp))
+                        },
+                        primaryButton = {
+                            PomboButton(
+                                text = stringResource(Res.string.close),
+                                onClick = {
+                                    onAction(EmailVerificationAction.OnCloseClick)
+                                },
+                                modifier = Modifier.fillMaxWidth(),
+                                style = PomboButtonStyle.SECONDARY
+                            )
+                        }
+                    )
+                }
             }
         }
     }
