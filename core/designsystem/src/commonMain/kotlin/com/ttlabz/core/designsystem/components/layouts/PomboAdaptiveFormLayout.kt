@@ -30,6 +30,7 @@ import com.ttlabz.core.designsystem.components.brand.PomboBrandLogo
 import com.ttlabz.core.designsystem.theme.PomboTheme
 import com.ttlabz.core.designsystem.theme.extended
 import com.ttlabz.core.presentation.util.DeviceConfiguration
+import com.ttlabz.core.presentation.util.clearFocusOnTap
 import com.ttlabz.core.presentation.util.currentDeviceConfiguration
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -52,6 +53,7 @@ fun PomboAdaptiveFormLayout(
         DeviceConfiguration.MOBILE_PORTRAIT -> {
             PomboSurface(
                 modifier = modifier
+                    .clearFocusOnTap()
                     .consumeWindowInsets(WindowInsets.navigationBars)
                     .consumeWindowInsets(WindowInsets.displayCutout),
                 header = {
