@@ -21,6 +21,7 @@ import com.ttlabz.core.designsystem.components.layouts.PomboAdaptiveFormLayout
 import com.ttlabz.core.designsystem.components.textfields.PomboPasswordTextField
 import com.ttlabz.core.designsystem.components.textfields.PomboTextField
 import com.ttlabz.core.designsystem.theme.PomboTheme
+import com.ttlabz.core.presentation.util.ObserveAsEvents
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
@@ -41,6 +42,12 @@ fun LoginScreenRoot(
     onCreateAccountClick: () -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+
+    ObserveAsEvents(viewModel.events) { event ->
+        when (event) {
+            LoginEvent.Success -> onLoginSuccess()
+        }
+    }
 
     LoginScreen(
         state = state,

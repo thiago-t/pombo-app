@@ -1,17 +1,38 @@
 package com.ttlabz.core.data.auth
 
+import com.ttlabz.core.data.dto.AuthInfoSerializable
 import com.ttlabz.core.data.dto.requests.EmailRequest
+import com.ttlabz.core.data.dto.requests.LoginRequest
 import com.ttlabz.core.data.dto.requests.RegisterRequest
+import com.ttlabz.core.data.mappers.toDomain
 import com.ttlabz.core.data.networking.get
 import com.ttlabz.core.data.networking.post
+import com.ttlabz.core.domain.auth.AuthInfo
 import com.ttlabz.core.domain.auth.AuthService
 import com.ttlabz.core.domain.util.DataError
 import com.ttlabz.core.domain.util.EmptyResult
+import com.ttlabz.core.domain.util.Result
+import com.ttlabz.core.domain.util.map
 import io.ktor.client.HttpClient
 
 class KtorAuthService(
     private val httpClient: HttpClient
 ) : AuthService {
+
+    override suspend fun login(
+        email: String,
+        password: String
+    ): Result<AuthInfo, DataError.Remote> {
+        return httpClient.post<LoginRequest, AuthInfoSerializable>(
+            route = "api/v1/auth/login",
+            body = LoginRequest(
+                email = email,
+                password = password
+            )
+        ).map { authInfoSerializable ->
+            authInfoSerializable.toDomain()
+        }
+    }
 
     override suspend fun register(
         email: String,
