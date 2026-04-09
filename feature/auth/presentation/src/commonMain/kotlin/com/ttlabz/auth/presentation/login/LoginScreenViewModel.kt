@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ttlabz.auth.domain.EmailValidator
 import com.ttlabz.core.domain.auth.AuthService
+import com.ttlabz.core.domain.auth.SessionStorage
 import com.ttlabz.core.domain.util.DataError
 import com.ttlabz.core.domain.util.onFailure
 import com.ttlabz.core.domain.util.onSuccess
@@ -27,7 +28,8 @@ import pombo.feature.auth.presentation.generated.resources.error_email_not_verif
 import pombo.feature.auth.presentation.generated.resources.error_invalid_credentials
 
 class LoginScreenViewModel(
-    private val authService: AuthService
+    private val authService: AuthService,
+    private val sessionStorage: SessionStorage
 ) : ViewModel() {
 
     private var hasLoadedInitialData = false
@@ -107,6 +109,7 @@ class LoginScreenViewModel(
                     password = password
                 )
                 .onSuccess { authInfo ->
+                    sessionStorage.set(authInfo)
                     _state.update {
                         it.copy(
                             isLoggingIn = false
