@@ -10,10 +10,13 @@ import com.ttlabz.chat.presentation.chat_list.ChatListScreenRoot
 import com.ttlabz.chat.presentation.chat_list.ChatListScreenRoute
 
 @Composable
-fun NavigationRoot(navController: NavHostController) {
+fun NavigationRoot(
+    navController: NavHostController,
+    startDestination: Any
+) {
     NavHost(
         navController = navController,
-        startDestination = AuthGraphRoutes.Graph,
+        startDestination = startDestination,
     ) {
         authGraph(
             navController = navController,
