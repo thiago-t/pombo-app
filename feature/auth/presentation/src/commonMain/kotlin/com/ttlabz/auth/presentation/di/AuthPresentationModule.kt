@@ -1,6 +1,7 @@
 package com.ttlabz.auth.presentation.di
 
 import com.ttlabz.auth.presentation.email_verification.EmailVerificationViewModel
+import com.ttlabz.auth.presentation.forgot_password.ForgotPasswordViewModel
 import com.ttlabz.auth.presentation.login.LoginScreenViewModel
 import com.ttlabz.auth.presentation.register.RegisterViewModel
 import com.ttlabz.auth.presentation.register_success.RegisterSuccessViewModel
@@ -12,4 +13,5 @@ val authPresentationModule = module {
     viewModelOf(::RegisterSuccessViewModel)
     viewModelOf(::EmailVerificationViewModel)
     viewModelOf(::LoginScreenViewModel)
+    viewModelOf(::ForgotPasswordViewModel)
 }
