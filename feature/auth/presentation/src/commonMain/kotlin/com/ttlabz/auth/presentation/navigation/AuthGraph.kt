@@ -10,6 +10,7 @@ import com.ttlabz.auth.presentation.forgot_password.ForgotPasswordRoot
 import com.ttlabz.auth.presentation.login.LoginScreenRoot
 import com.ttlabz.auth.presentation.register.RegisterRoot
 import com.ttlabz.auth.presentation.register_success.RegisterSuccessRoot
+import com.ttlabz.auth.presentation.reset_password.ResetPasswordRoot
 
 fun NavGraphBuilder.authGraph(
     navController: NavController,
@@ -92,5 +93,19 @@ fun NavGraphBuilder.authGraph(
     }
     composable<AuthGraphRoutes.ForgotPassword> {
         ForgotPasswordRoot()
+    }
+    composable<AuthGraphRoutes.ResetPassword>(
+        deepLinks = listOf(
+            navDeepLink {
+                this.uriPattern =
+                    "https://pombo-d341e.rj.r.appspot.com/api/v1/auth/reset-password?token={token}"
+            },
+            navDeepLink {
+                this.uriPattern =
+                    "pombo://pombo-d341e.rj.r.appspot.com/api/v1/auth/reset-password?token={token}"
+            }
+        )
+    ) {
+        ResetPasswordRoot()
     }
 }

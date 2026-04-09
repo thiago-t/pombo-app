@@ -4,6 +4,7 @@ import com.ttlabz.core.data.dto.AuthInfoSerializable
 import com.ttlabz.core.data.dto.requests.EmailRequest
 import com.ttlabz.core.data.dto.requests.LoginRequest
 import com.ttlabz.core.data.dto.requests.RegisterRequest
+import com.ttlabz.core.data.dto.requests.ResetPasswordRequest
 import com.ttlabz.core.data.mappers.toDomain
 import com.ttlabz.core.data.networking.get
 import com.ttlabz.core.data.networking.post
@@ -67,6 +68,19 @@ class KtorAuthService(
         return httpClient.post<EmailRequest, Unit>(
             route = "/api/v1/auth/forgot-password",
             body = EmailRequest(email)
+        )
+    }
+
+    override suspend fun resetPassword(
+        newPassword: String,
+        token: String
+    ): EmptyResult<DataError.Remote> {
+        return httpClient.post(
+            route = "/api/v1/auth/reset-password",
+            body = ResetPasswordRequest(
+                newPassword = newPassword,
+                token = token
+            )
         )
     }
 

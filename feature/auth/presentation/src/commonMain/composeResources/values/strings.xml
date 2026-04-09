@@ -33,6 +33,7 @@
     <string name="error_invalid_username">The username must be between 3 and 20 characters</string>
     <string name="error_invalid_credentials">The email or password you entered is incorrect</string>
     <string name="error_email_not_verified">Unable to login because your email is not verified</string>
+    <string name="error_same_password">The new password can't be equal the old one.</string>
     <string name="error_reset_password_token_invalid">It seems like the reset password link is not valid or has expired. Please request new email.</string>
     <string name="forgot_password_email_sent_successfully">We've emailed you with a link to reset your password</string>
     <string name="reset_password_successfully">Your password has been changed successfully</string>

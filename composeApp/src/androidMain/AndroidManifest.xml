@@ -26,10 +26,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data
-                    android:host="pombo-d341e.rj.r.appspot.com"
-                    android:pathPrefix="/api/v1/auth/verify"
-                    android:scheme="http" />
+                <data android:scheme="http" />
+                <data android:host="pombo-d341e.rj.r.appspot.com" />
+                <data android:pathPrefix="/api/v1/auth/verify" />
+                <data android:pathPrefix="/api/v1/auth/reset-password" />
             </intent-filter>
 
             <intent-filter android:autoVerify="true">
@@ -38,10 +38,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data
-                    android:host="pombo-d341e.rj.r.appspot.com"
-                    android:pathPrefix="/api/v1/auth/verify"
-                    android:scheme="https" />
+                <data android:scheme="https" />
+                <data android:host="pombo-d341e.rj.r.appspot.com" />
+                <data android:pathPrefix="/api/v1/auth/verify" />
+                <data android:pathPrefix="/api/v1/auth/reset-password" />
             </intent-filter>
 
             <intent-filter>
@@ -50,10 +50,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data
-                    android:host="pombo-d341e.rj.r.appspot.com"
-                    android:pathPrefix="/api/v1/auth/verify"
-                    android:scheme="pombo" />
+                <data android:scheme="pombo" />
+                <data android:host="pombo-d341e.rj.r.appspot.com" />
+                <data android:pathPrefix="/api/v1/auth/verify" />
+                <data android:pathPrefix="/api/v1/auth/reset-password" />
             </intent-filter>
         </activity>
     </application>
