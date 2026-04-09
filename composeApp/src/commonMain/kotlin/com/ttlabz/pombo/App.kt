@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.ttlabz.auth.presentation.navigation.AuthGraphRoutes
 import com.ttlabz.chat.presentation.chat_list.ChatListScreenRoute
 import com.ttlabz.core.designsystem.theme.PomboTheme
+import com.ttlabz.core.presentation.util.ObserveAsEvents
 import com.ttlabz.pombo.navigation.DeepLinkListener
 import com.ttlabz.pombo.navigation.NavigationRoot
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -27,6 +28,18 @@ fun App(
     LaunchedEffect(state.isCheckingAuth) {
         if (!state.isCheckingAuth) {
             onAuthenticationChecked()
+        }
+    }
+
+    ObserveAsEvents(viewModel.events) { event ->
+        when (event) {
+            is MainEvent.OnSessionExpired -> {
+                navController.navigate(AuthGraphRoutes.Graph) {
+                    popUpTo(AuthGraphRoutes.Graph) {
+                        inclusive = false
+                    }
+                }
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 package com.ttlabz.pombo.di
 
 import com.ttlabz.auth.presentation.di.authPresentationModule
+import com.ttlabz.chat.presentation.di.chatPresentationModule
 import com.ttlabz.core.data.di.coreDataModule
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
@@ -12,6 +13,7 @@ fun initKoin(config: KoinAppDeclaration? = null) {
             coreDataModule,
             authPresentationModule,
             appModule,
+            chatPresentationModule,
         )
     }
 }
