@@ -18,7 +18,10 @@ val coreDataModule = module {
     includes(platformCoreDataModule)
     single<PomboLogger> { KermitLogger }
     single {
-        HttpClientFactory(pomboLogger = get()).create(engine = get())
+        HttpClientFactory(
+            pomboLogger = get(),
+            sessionStorage = get()
+        ).create(engine = get())
     }
     singleOf(::KtorAuthService) bind AuthService::class
     singleOf(::DataStoreSessionStorage) bind SessionStorage::class
